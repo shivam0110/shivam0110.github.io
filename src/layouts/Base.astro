@@ -1,0 +1,45 @@
+---
+import { existsSync } from 'node:fs';
+import { profile } from '../data/portfolio';
+import '../styles/global.css';
+
+interface Props { title?: string; description?: string; }
+const { title = 'Shivam Malpani — Software Engineer', description = profile.description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const hasResume = existsSync('public/resume.pdf');
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f8f8f3" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header shell">
+      <a class="wordmark" href="/" aria-label="Shivam Malpani, home"><span class="monogram" aria-hidden="true">s.</span> Shivam Malpani<span class="wordmark-dot">.</span></a>
+      <nav aria-label="Main navigation">
+        <a href="/#work">Work</a><a href="/#experience">Experience</a><a href="/#about">About</a>
+        {hasResume && <a href="/resume.pdf" download="Shivam-Malpani-Resume.pdf">Download résumé ↓</a>}
+        <a class="nav-contact" href="/#contact">Let’s talk <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+    <main id="main"><slot /></main>
+    <footer class="site-footer shell">
+      <a class="wordmark" href="/">Shivam Malpani<span class="wordmark-dot">.</span></a>
+      <span>Built with care. Kept simple.</span>
+      <a href={profile.github}>GitHub ↗</a>
+      <span>© {new Date().getFullYear()}</span>
+    </footer>
+  </body>
+</html>

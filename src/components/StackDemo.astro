@@ -1,0 +1,40 @@
+---
+interface Props { compact?: boolean; }
+const { compact = false } = Astro.props;
+---
+<div class:list={['stack-demo', { compact }]} data-stack-demo>
+  <div class="editor-bar"><span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>stackhub / workspace</span><span aria-hidden="true">⌘</span></div>
+  <div class="editor-body">
+    <div class="editor-rail" aria-hidden="true"><span>▱</span><span class="active">⑂</span><span>⌕</span><span>⊞</span></div>
+    <div class="stack-content">
+      <div class="stack-heading"><span>YOUR STACK</span><span class="branch-count">3 branches</span></div>
+      <ol class="branch-tree" aria-label="Example pull request stack">
+        <li><span class="branch-dot"></span><div><strong>feat/review-ui</strong><small>Build the review experience</small></div><span class="pr-state" data-pr>PR 03</span></li>
+        <li><span class="branch-dot"></span><div><strong>feat/api</strong><small>Connect the pieces</small></div><span class="pr-state" data-pr>PR 02</span></li>
+        <li class="selected"><span class="branch-dot"></span><div><strong>feat/data-model</strong><small>Start with a solid foundation</small></div><span class="pr-state" data-pr>PR 01</span></li>
+        <li class="trunk"><span class="branch-dot"></span><div><strong>main</strong><small>The shared starting point</small></div></li>
+      </ol>
+      <div class="stack-controls"><button type="button" data-restack aria-pressed="false">Restack descendants <span aria-hidden="true">↗</span></button></div>
+      <p class="demo-status" data-status role="status">Try it: update a parent, then restack.</p>
+    </div>
+  </div>
+  <div class="editor-footer"><span><span class="status-dot"></span> Native Git. Inside your editor.</span><span>Interactive illustration</span></div>
+</div>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-stack-demo]').forEach((demo) => {
+    const button = demo.querySelector<HTMLButtonElement>('[data-restack]');
+    const status = demo.querySelector<HTMLElement>('[data-status]');
+    button?.addEventListener('click', () => {
+      const updated = button.getAttribute('aria-pressed') !== 'true';
+      button.setAttribute('aria-pressed', String(updated));
+      button.textContent = updated ? 'Reset example ↺' : 'Restack descendants ↗';
+      demo.classList.toggle('is-restacked', updated);
+      demo.querySelectorAll<HTMLElement>('[data-pr]').forEach((label, i) => {
+        label.textContent = updated ? '✓ Updated' : `PR 0${3 - i}`;
+      });
+      if (status) status.textContent = updated
+        ? 'All 3 branches now include the updated foundation.'
+        : 'Try it: update a parent, then restack.';
+    });
+  });
+</script>
