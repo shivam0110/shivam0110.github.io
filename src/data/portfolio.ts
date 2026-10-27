@@ -1,6 +1,7 @@
 export const profile = {
   name: 'Shivam Malpani',
   email: 'mr.shivammalpani@gmail.com',
+  phone: '+91-9979173770',
   github: 'https://github.com/shivam0110',
   linkedin: 'https://www.linkedin.com/in/shivammalpani/',
   description: 'Software Engineer II at Karbon. I build AI products and developer tools that make complex work simpler.',
