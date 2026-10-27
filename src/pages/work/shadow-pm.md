@@ -1,27 +1,27 @@
 ---
 layout: ../../layouts/CaseStudy.astro
 title: Shadow PM
-description: A high-level look at connecting enterprise context, specialist agents, and prototype generation.
-category: Agentic AI / Project overview
+description: A multi-agent platform that brings Jira, customer transcripts, and codebase context together for product research and UI prototyping.
+category: Agentic AI / Product engineering
 ---
 
-## The idea
+## The problem
 
-Product work draws on scattered context and moves through several kinds of reasoning before an idea becomes tangible. Shadow PM explores a workflow that connects that context with specialist agents and prototype generation.
+Product decisions draw on scattered context: customer conversations, existing tickets, and what the codebase actually supports. Turning that information into a useful plan or prototype takes both research and coordination.
 
-## The shape of the system
+## What I built
 
-The project brings together enterprise context, multi-agent workflows, and Temporal orchestration. The diagram on the homepage is a conceptual explanation of that flow, not a production architecture diagram.
+Shadow PM connects those sources in a multi-agent platform for product research and UI prototyping. I built it with a Python / FastAPI backend, Temporal orchestration, and LangSmith tracing.
 
-## Questions that matter
+## The technology in context
 
-- **Context:** What information does each step need, and how can its relevance be checked?
-- **Coordination:** Which tasks benefit from specialist agents, and what should pass between them?
-- **Orchestration:** How should a longer-running workflow handle progress, retries, and failures?
-- **Review:** Where should a person check the output before it moves to the next step?
+- **Python and FastAPI** provide the backend for the platform and its integrations.
+- **Temporal** orchestrates the multi-step agent workflows.
+- **LangSmith** provides tracing to inspect how the AI workflow runs.
+- **Jira, customer transcripts, and codebase analysis** supply context for research and prototype generation.
 
-## Scope of this overview
+The homepage diagram illustrates the flow from context through specialist agents to a prototype.
 
-This is a project introduction, not a claim about production adoption or measured impact. A detailed case study needs confirmed contribution boundaries, approved examples, and evidence of the outcomes.
+## The engineering focus
 
-For now, the focus is the engineering problem: making several AI-driven steps work together toward something a person can inspect and use.
+The work goes beyond calling an LLM: connecting useful context, coordinating several steps, and making execution inspectable. The result is a workflow that turns product research into something a person can review and refine.

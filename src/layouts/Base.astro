@@ -4,7 +4,7 @@ import { profile } from '../data/portfolio';
 import '../styles/global.css';
 
 interface Props { title?: string; description?: string; }
-const { title = 'Shivam Malpani — Software Engineer', description = profile.description } = Astro.props;
+const { title = 'Shivam Malpani — Full-stack & AI Engineer', description = profile.description } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const hasResume = existsSync('public/resume.pdf');
 ---
@@ -29,7 +29,7 @@ const hasResume = existsSync('public/resume.pdf');
     <header class="site-header shell">
       <a class="wordmark" href="/" aria-label="Shivam Malpani, home"><span class="monogram" aria-hidden="true">s.</span> Shivam Malpani<span class="wordmark-dot">.</span></a>
       <nav aria-label="Main navigation">
-        <a href="/#work">Work</a><a href="/#experience">Experience</a><a href="/#about">About</a>
+        <a href="/#work">Work</a><a href="/#skills">Skills</a><a href="/#experience">Experience</a><a href="/#about">About</a>
         {hasResume && <a href="/resume.pdf" download="Shivam-Malpani-Resume.pdf">Download résumé ↓</a>}
         <a class="nav-contact" href="/#contact">Let’s talk <span aria-hidden="true">↗</span></a>
       </nav>

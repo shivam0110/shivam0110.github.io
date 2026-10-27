@@ -13,9 +13,13 @@ The challenge is making that complexity manageable without hiding the details ne
 
 ## My contribution
 
-At Karbon, I work on AI products and full-stack systems. This work includes invoice-processing and review experiences, in collaboration with product managers and other engineers.
+At Karbon, I built the Accounts Receivable module across frontend and backend, covering AI-assisted invoice creation, allocation matching, and Tally synchronization. I also rebuilt ingestion for files with 40,000+ rows, pairing streaming parsing and chunked asynchronous processing with a virtualized review grid.
 
-This overview describes the engineering concerns at a high level. It does not reproduce internal screens, customer data, or proprietary implementation details.
+## The technology in context
+
+- **Amazon SQS** supports asynchronous processing and integrations, including Tally communication and accounting-data synchronization.
+- **Streaming parsing and chunked processing** handle large invoice files.
+- **A virtualized frontend grid** supports review, inline validation, and bulk correction without rendering every row at once.
 
 ## Engineering focus
 
@@ -26,7 +30,7 @@ This overview describes the engineering concerns at a high level. It does not re
 
 ## Delivery
 
-The team’s Inbox / Voucher Desk release received feedback recognizing on-time delivery, quality, and coordination. That was a shared outcome; this portfolio does not attribute the whole release to one engineer.
+The Accounts Receivable module reached 200+ uploads and 50+ active users in its first week. Product delivery was a collaboration with the wider team.
 
 ## A useful lesson
 
